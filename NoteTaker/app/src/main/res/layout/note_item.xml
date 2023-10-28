@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginTop="8dp"
+    android:orientation="horizontal"
+    android:gravity="center">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/your_card_background_color">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/noteText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Note"
+            android:textSize="20sp"
+            android:textColor="@color/your_text_color_primary" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <ImageView
+        android:id="@+id/tick_symbol"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_weight="0.2"
+        app:srcCompat="@drawable/tick_symbol"
+        android:scaleType="fitCenter" />
+
+    <ImageView
+        android:id="@+id/wrong_symbol"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_weight="0.2"
+        app:srcCompat="@drawable/wrong_symbol"
+        android:scaleType="fitCenter" />
+</LinearLayout>

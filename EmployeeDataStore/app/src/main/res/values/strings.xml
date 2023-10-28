@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Employee Data Store</string>
+    <string name="new_employee_form">New Employee Form</string>
+    <string name="enter_employee_name">Enter employee name</string>
+    <string name="enter_employee_code">Enter employee code</string>
+    <string name="submit">Submit</string>
+    <string name="add_emp">+</string>
+</resources>

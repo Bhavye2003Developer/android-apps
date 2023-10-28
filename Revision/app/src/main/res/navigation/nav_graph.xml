@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.revision.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_diceRollFragment"
+            app:destination="@id/diceRollFragment"
+            app:enterAnim="@anim/nav_slide_in_right"
+            app:exitAnim="@anim/nav_slide_out_left"
+            app:popExitAnim="@anim/nav_slide_out_right"
+            app:popEnterAnim="@anim/nav_slide_in_left"/>
+        <action
+            android:id="@+id/action_homeFragment_to_quizActivity"
+            app:destination="@id/quizActivity"
+            app:enterAnim="@anim/nav_slide_in_right"
+            app:exitAnim="@anim/nav_slide_out_left"
+            app:popExitAnim="@anim/nav_slide_out_right"
+            app:popEnterAnim="@anim/nav_slide_in_left"/>
+        <action
+            android:id="@+id/action_homeFragment_to_activityLc"
+            app:destination="@id/activityLc"
+            app:enterAnim="@anim/nav_slide_in_right"
+            app:exitAnim="@anim/nav_slide_out_left"
+            app:popExitAnim="@anim/nav_slide_out_right"
+            app:popEnterAnim="@anim/nav_slide_in_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/diceRollFragment"
+        android:name="com.example.revision.DiceRollFragment"
+        android:label="DiceRollFragment" />
+    <activity
+        android:id="@+id/quizActivity"
+        android:name="com.example.revision.quiz.QuizActivity"
+        android:label="QuizActivity" />
+    <activity
+        android:id="@+id/activityLc"
+        android:name="com.example.revision.ActivityLc"
+        android:label="activity_lc"
+        tools:layout="@layout/activity_lc" />
+</navigation>

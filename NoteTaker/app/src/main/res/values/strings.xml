@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Note Taker</string>
+    <string name="dec">-</string>
+    <string name="inc">+</string>
+    <string name="count_your_number">Count your Number</string>
+    <string name="enter_your_note_here">Write your note here...</string>
+    <string name="add">ADD</string>
+    <string name="notify">Notify</string>
+    <string name="note">Note</string>
+</resources>
