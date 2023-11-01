@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="20dp">
+
+        <TextView
+            android:gravity="center"
+            android:fontFamily="serif-monospace"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="21sp"
+            android:text="@string/astronomy_pic_of_the_day" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:id="@+id/astronomy_pic_day"
+            android:contentDescription="@string/astronomy_pic_of_the_day" />
+
+        <TextView
+            android:id="@+id/btnSpaceNews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="@string/latest_space_news" />
+
+        <TextView
+            android:id="@+id/btnPosSat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="@string/position_of_a_satellite_tle" />
+
+    </LinearLayout>
+</ScrollView>

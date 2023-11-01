@@ -1,0 +1,16 @@
+<!-- marker_default.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Outer Circle (Background) -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#FF5722" /> <!-- Background color -->
+            <size android:width="24dp" android:height="24dp" />
+        </shape>
+    </item>
+    <!-- Inner Circle (Marker) -->
+    <item android:top="2dp" android:bottom="2dp" android:left="2dp" android:right="2dp">
+        <shape android:shape="oval">
+            <solid android:color="#FFFF00" /> <!-- Marker color -->
+        </shape>
+    </item>
+</layer-list>
