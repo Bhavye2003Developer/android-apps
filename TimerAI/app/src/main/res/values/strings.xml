@@ -4,4 +4,5 @@
     <string name="enter_seconds_to_count">Enter seconds to count</string>
     <string name="btnSetTime">SET TIME</string>
     <string name="add_new_timer">ADD NEW TIMER</string>
+    <string name="stop_timer">STOP TIMER</string>
 </resources>

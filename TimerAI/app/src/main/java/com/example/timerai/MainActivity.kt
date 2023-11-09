@@ -24,6 +24,11 @@ class MainActivity : AppCompatActivity(), TimeCounterDialog.NoticeDialogListener
             TimeCounterDialog().show(supportFragmentManager, "Set time")
         }
 
+        binding.btnStopTimer.setOnClickListener {
+            viewModel.stopTimer()
+            binding.btnNewTimer.isEnabled = true
+        }
+
         viewModel.isFinished.observe(this) {
             if (viewModel.isFinished.value == true) {
                 binding.btnNewTimer.isEnabled = true
@@ -57,6 +62,7 @@ class MainActivity : AppCompatActivity(), TimeCounterDialog.NoticeDialogListener
         Toast.makeText(this, "Starting timer...", Toast.LENGTH_SHORT).show()
         viewModel.startTimer(time)
         binding.btnNewTimer.isEnabled = false
+        binding.btnStopTimer.isEnabled = true
 
         viewModel.timeText.observe(this) {
             binding.timerCountdown.text = it
