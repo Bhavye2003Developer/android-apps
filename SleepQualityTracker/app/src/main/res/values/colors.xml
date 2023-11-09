@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorVeryPoor">#FF5252</color>
+
+    <!-- Poor to Fair: Orange -->
+    <color name="colorPoor">#FF9800</color>
+
+    <!-- Fair to Good: Yellow -->
+    <color name="colorFair">#FFEB3B</color>
+
+    <!-- Good to Pretty Good: Light Green -->
+    <color name="colorGood">#8BC34A</color>
+
+    <!-- Pretty Good to Excellent: Green -->
+    <color name="colorPrettyGood">#4CAF50</color>
+
+    <!-- Excellent: Blue -->
+    <color name="colorExcellent">#2196F3</color>
+</resources>

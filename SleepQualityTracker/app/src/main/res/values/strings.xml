@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Sleep Quality Tracker</string>
+    <string name="start">START</string>
+    <string name="stop">STOP</string>
+    <string name="here_is_your_sleep_data">HERE IS YOUR SLEEP DATA</string>
+    <string name="how_was_your_sleep">How was your sleep?</string>
+</resources>
