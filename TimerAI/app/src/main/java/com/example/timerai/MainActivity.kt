@@ -4,9 +4,11 @@ import android.media.Ringtone
 import android.media.RingtoneManager
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.text.format.DateUtils
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.timerai.databinding.ActivityMainBinding
@@ -24,9 +26,19 @@ class MainActivity : AppCompatActivity(), TimeCounterDialog.NoticeDialogListener
             TimeCounterDialog().show(supportFragmentManager, "Set time")
         }
 
-        binding.btnStopTimer.setOnClickListener {
+        binding.btnPauseTimer.setOnClickListener {
             viewModel.stopTimer()
+            Toast.makeText(this, "Timer paused", Toast.LENGTH_SHORT).show()
             binding.btnNewTimer.isEnabled = true
+            binding.btnPauseTimer.isEnabled = false
+            binding.btnResumeTimer.isEnabled = true
+        }
+
+        binding.btnResumeTimer.setOnClickListener {
+            Toast.makeText(this, "Timer resumed", Toast.LENGTH_SHORT).show()
+            viewModel.resumeTimer()
+            binding.btnPauseTimer.isEnabled = true
+            binding.btnResumeTimer.isEnabled = false
         }
 
         viewModel.isFinished.observe(this) {
@@ -41,6 +53,8 @@ class MainActivity : AppCompatActivity(), TimeCounterDialog.NoticeDialogListener
                     override fun onFinish() {
                         alarmObj.stop()
                         viewModel.isFinished.value = false
+                        binding.btnPauseTimer.isEnabled = false
+                        binding.btnResumeTimer.isEnabled = false
                     }
                 }.start()
             }
@@ -62,10 +76,15 @@ class MainActivity : AppCompatActivity(), TimeCounterDialog.NoticeDialogListener
         Toast.makeText(this, "Starting timer...", Toast.LENGTH_SHORT).show()
         viewModel.startTimer(time)
         binding.btnNewTimer.isEnabled = false
-        binding.btnStopTimer.isEnabled = true
+        binding.btnPauseTimer.isEnabled = true
 
         viewModel.timeText.observe(this) {
-            binding.timerCountdown.text = it
+            if (it < 10) {
+                binding.timerCountdown.setTextColor(ContextCompat.getColor(this, R.color.red))
+            } else {
+                binding.timerCountdown.setTextColor(ContextCompat.getColor(this, R.color.white))
+            }
+            binding.timerCountdown.text = DateUtils.formatElapsedTime(it.toLong()).toString()
         }
     }
 }

@@ -5,4 +5,8 @@
     <string name="btnSetTime">SET TIME</string>
     <string name="add_new_timer">ADD NEW TIMER</string>
     <string name="stop_timer">STOP TIMER</string>
+    <string name="pause">||</string>
+    <string name="add_timer">+</string>
+    <string name="resume">▶️</string>
+    <string name="timely">TIMELY</string>
 </resources>
