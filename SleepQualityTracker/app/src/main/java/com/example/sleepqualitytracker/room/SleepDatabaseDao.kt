@@ -15,4 +15,7 @@ interface SleepDatabaseDao {
 
     @Query("UPDATE sleep_quality_table SET quality=:rating WHERE id = :nightId")
     suspend fun updateNight(nightId: Long, rating: Int)
+
+    @Query("DELETE FROM sleep_quality_table")
+    suspend fun clearAllNightData()
 }

@@ -30,6 +30,11 @@ class SleepViewModel(context: Context) : ViewModel() {
             dao.insertNewNight(night)
         }
     }
+    fun clearAllSleepData(){
+        CoroutineScope(Dispatchers.IO).launch {
+            dao.clearAllNightData()
+        }
+    }
 
     fun createNewSleep() : SleepEntity{
         return SleepEntity()

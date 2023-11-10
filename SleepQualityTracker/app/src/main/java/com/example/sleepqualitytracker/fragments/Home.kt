@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -70,6 +71,11 @@ class Home : Fragment() {
             if (sleepObject != null) {
                 viewModel.insertNewNight(sleepObject)
             }
+        }
+
+        binding.btnClearAll.setOnClickListener {
+            Toast.makeText(requireActivity().applicationContext, "Clearing all data", Toast.LENGTH_SHORT).show()
+            viewModel.clearAllSleepData()
         }
 
         viewModel.allNights.observe(viewLifecycleOwner){
