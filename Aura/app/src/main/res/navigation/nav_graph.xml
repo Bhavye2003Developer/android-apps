@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home2">
+
+    <fragment
+        android:id="@+id/home2"
+        android:name="com.example.aura.fragments.Home"
+        android:label="Home">
+        <action
+            android:id="@+id/action_home2_to_imageLabelling"
+            app:destination="@id/imageLabelling" />
+        <action
+            android:id="@+id/action_home2_to_analyseTextFragment"
+            app:destination="@id/analyseTextFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/analyseTextFragment"
+        android:name="com.example.aura.fragments.AnalyseTextFragment"
+        android:label="fragment_analyse_text"
+        tools:layout="@layout/fragment_analyse_text" />
+    <fragment
+        android:id="@+id/imageLabelling"
+        android:name="com.example.aura.fragments.ImageLabelling"
+        android:label="ImageLabelling" />
+</navigation>

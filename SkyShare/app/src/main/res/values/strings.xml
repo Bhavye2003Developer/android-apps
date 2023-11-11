@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SkyShare</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sender">SENDER</string>
+    <string name="receiver">RECEIVER</string>
+</resources>
