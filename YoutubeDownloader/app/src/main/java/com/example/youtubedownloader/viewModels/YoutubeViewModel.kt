@@ -103,6 +103,9 @@ class YoutubeViewModel(private val application: Application) : AndroidViewModel(
                     val youtubeURL = YoutubeURL(videoTitle = videoTitle, downloadDate = Date().time)
                     insertUrl(youtubeURL)
                 }
+                else if (statusMessage(cursor)=="Download failed!"){
+                    break
+                }
                 cursor.close()
             }
         }
@@ -150,7 +153,7 @@ class YoutubeViewModel(private val application: Application) : AndroidViewModel(
         }
     }
     private fun downloadVideo(baseActivity: Context, url: String, videoTitle: String): Pair<String, Long> {
-        val direct = File(Environment.getExternalStorageDirectory().toString() + "/yt_downloads")
+        val direct = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "yt_downloads")
         if (!direct.exists()) {
             direct.mkdirs()
         }

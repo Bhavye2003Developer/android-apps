@@ -30,9 +30,9 @@ class Home : Fragment() {
 
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         binding.btnDownload.setOnClickListener {
             val url = binding.urlText.editableText.toString()
@@ -46,4 +46,6 @@ class Home : Fragment() {
             findNavController().navigate(action)
         }
     }
+
+
 }
