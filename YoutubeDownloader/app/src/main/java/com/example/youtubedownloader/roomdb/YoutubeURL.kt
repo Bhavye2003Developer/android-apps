@@ -9,7 +9,6 @@ data class YoutubeURL(
 
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-    val urlText: String,
-    val downloadDate: Long = Date().time,
-    val isDownloadSuccess: Boolean = false
+    val videoTitle: String,
+    val downloadDate: Long = Date().time
 )

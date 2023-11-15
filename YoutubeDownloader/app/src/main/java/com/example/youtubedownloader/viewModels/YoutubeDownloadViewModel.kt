@@ -1,4 +1,4 @@
-package com.example.youtubedownloader
+package com.example.youtubedownloader.viewModels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -10,4 +10,6 @@ class YoutubeDownloadViewModel(application: Application) : AndroidViewModel(appl
     init {
         database = YoutubeDatabase.getInstance(application)
     }
+
+
 }

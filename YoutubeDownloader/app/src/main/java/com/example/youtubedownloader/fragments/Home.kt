@@ -8,15 +8,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.room.Room
-import com.example.youtubedownloader.YoutubeViewModel
-import com.example.youtubedownloader.YoutubeViewModelFactory
 import com.example.youtubedownloader.databinding.FragmentHomeBinding
-import com.example.youtubedownloader.roomdb.YoutubeDatabase
-import com.example.youtubedownloader.roomdb.YoutubeURL
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.example.youtubedownloader.viewModels.YoutubeViewModel
+import com.example.youtubedownloader.viewModels.YoutubeViewModelFactory
 
 class Home : Fragment() {
 
@@ -31,7 +25,8 @@ class Home : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         viewModel = ViewModelProvider(this,
-            YoutubeViewModelFactory(application = requireActivity().application))[YoutubeViewModel::class.java]
+            YoutubeViewModelFactory(application = requireActivity().application)
+        )[YoutubeViewModel::class.java]
 
         return binding.root
     }
@@ -43,10 +38,8 @@ class Home : Fragment() {
             val url = binding.urlText.editableText.toString()
             Toast.makeText(context, "Processing url...", Toast.LENGTH_SHORT).show()
             // process the url
-            val youtubeURL = YoutubeURL(urlText = url)
-            viewModel.insertUrl(youtubeURL = youtubeURL)
+            viewModel.processURL(url)
         }
-
         binding.downloads.setOnClickListener {
             Toast.makeText(context, "Opening downloads page...", Toast.LENGTH_SHORT).show()
             val action = HomeDirections.actionHome2ToDownloads2()
