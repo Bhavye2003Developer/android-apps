@@ -7,6 +7,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,13 +34,14 @@ class Downloads : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Example usage:
         val directoryPath = Environment.getExternalStoragePublicDirectory("")?.absolutePath + "/yt_downloads"
         val filesList = context?.let { getFilesInDirectory(it, directoryPath) }
 
+        Log.d("testing", filesList.toString())
+
         if (filesList!=null) {
             binding.ytDownloadedVideosRecyclerView.adapter =
-                context?.let { YTViewAdapter(it, filesList) }
+                context?.let { activity?.let { it1 -> YTViewAdapter(it, activity = it1,filesList) } }
             binding.errorText.visibility = View.GONE
         }
         else{

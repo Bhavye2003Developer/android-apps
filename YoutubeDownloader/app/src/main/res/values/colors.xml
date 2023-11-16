@@ -2,4 +2,31 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="brown">#F0533131</color>
+
+    <!-- Material Design Colors for Dark Theme -->
+    <color name="colorPrimary">@color/material_light_blue_500</color>
+    <color name="colorPrimaryDark">@color/material_light_blue_700</color>
+    <color name="colorAccent">@color/material_pink_500</color>
+    <color name="colorError">@color/material_red_500</color>
+
+    <!-- Material Design On-Surface Colors for Dark Theme -->
+    <color name="material_on_surface">@android:color/white</color>
+    <color name="material_on_surface_emphasis_high">@android:color/white</color>
+    <color name="material_on_surface_emphasis_medium">#B3FFFFFF</color>
+    <color name="material_on_surface_medium_emphasis">#8AFFFFFF</color>
+    <color name="material_on_surface_low_emphasis">#61FFFFFF</color>
+
+    <!-- Material Design Accent Colors for Dark Theme -->
+    <color name="material_light_blue_500">#03A9F4</color>
+    <color name="material_light_blue_700">#0288D1</color>
+    <color name="material_pink_500">#E91E63</color>
+
+    <!-- Material Design Additional Colors for Dark Theme -->
+    <color name="material_red_500">#F44336</color>
+
+    <color name="green">#60FA66</color>
+
+    <!-- Add more colors as needed -->
+
 </resources>

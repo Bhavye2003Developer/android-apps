@@ -4,19 +4,24 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.youtubedownloader.fragments.VideoDeleteDialog
 
 
-class YTViewAdapter(private val context: Context,private val ytVideos: List<String>) : RecyclerView.Adapter<YTViewAdapter.ItemViewHolder>() {
+class YTViewAdapter(private val context: Context,private val activity: FragmentActivity,private val ytVideos: List<String>) : RecyclerView.Adapter<YTViewAdapter.ItemViewHolder>() {
 
     private val path = "/storage/emulated/0/yt_downloads/"
     class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ytTitle: TextView = view.findViewById(R.id.yt_video_title)
+        val options: ImageView = view.findViewById(R.id.options)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -30,10 +35,18 @@ class YTViewAdapter(private val context: Context,private val ytVideos: List<Stri
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val video = ytVideos[position]
-        holder.ytTitle.text = video.split(path)[1]
-
+        Log.d("testing", "video -> $video")
+        try{
+            holder.ytTitle.text = video.split(path)[1]
+        }
+        catch (exception: Exception){
+            Log.d("testing", exception.toString())
+        }
         holder.ytTitle.setOnClickListener {
             openFile(video)
+        }
+        holder.options.setOnClickListener {
+            VideoDeleteDialog(video, activity).show(activity.supportFragmentManager, "VIDEO_DELETE_DIALOG")
         }
     }
 

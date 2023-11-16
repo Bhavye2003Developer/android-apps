@@ -70,4 +70,7 @@ dependencies {
     //Jsoup
     implementation("org.jsoup:jsoup:1.16.2")
 
+    //material
+    implementation("com.google.android.material:material:1.10.0")
+
 }

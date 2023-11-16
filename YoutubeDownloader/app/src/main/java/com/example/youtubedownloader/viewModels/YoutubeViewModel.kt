@@ -10,6 +10,8 @@ import android.net.Uri
 import android.os.Environment
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -28,15 +30,22 @@ import java.util.Date
 class YoutubeViewModel(private val application: Application) : AndroidViewModel(application) {
     // url processing
     private var database: YoutubeDatabase = YoutubeDatabase.getInstance(application)
+
+    private val _videoDownloadProgress : MutableLiveData<Double> = MutableLiveData(0.0)
+    val videoDownloadProgress : LiveData<Double>
+        get() = _videoDownloadProgress
+
     private fun insertUrl(youtubeURL: YoutubeURL){
         viewModelScope.launch {
             database.youtubeDao().insertUrl(youtubeURL)
         }
     }
     fun processURL(url: String){
-
         when (isValidUrl(url)) {
             2 -> {
+
+                Log.d("testing", "processing url...")
+
                 CoroutineScope(Dispatchers.IO).launch {
                     val baseUri: Deferred<String> = async { Jsoup.connect(url).get().baseUri()}
                     val updatedURL = baseUri.await().replace("youtube", "youpak")
@@ -46,15 +55,18 @@ class YoutubeViewModel(private val application: Application) : AndroidViewModel(
                     val videoURL = info.second.second
                     val videoTitle = info.first
 
-                    val downloadInfo = downloadVideo(application.baseContext, videoURL, videoTitle)
-                    val downloadId = downloadInfo.second
-                    val videoName = downloadInfo.first
+                    val downloadInfo = async { downloadVideo(application.baseContext, videoURL, videoTitle) }
+                    val downloadInfoAwait = downloadInfo.await()
+                    val downloadId = downloadInfoAwait.second
+                    val videoName = downloadInfoAwait.first
                     getDownloadStatus(downloadId, application.baseContext, videoName)
 
                     Log.d("testing", info.first)
                 }
             }
             1 -> {
+
+                Log.d("testing", "processing url...")
                 val updatedURL = url.replace("youtube", "youpak")
                 CoroutineScope(Dispatchers.IO).launch {
                     val doc = Jsoup.connect(updatedURL).get()
@@ -63,9 +75,10 @@ class YoutubeViewModel(private val application: Application) : AndroidViewModel(
                     val videoURL = info.second.second
                     val videoTitle = info.first
 
-                    val downloadInfo = downloadVideo(application.baseContext, videoURL, videoTitle)
-                    val downloadId = downloadInfo.second
-                    val videoName = downloadInfo.first
+                    val downloadInfo = async { downloadVideo(application.baseContext, videoURL, videoTitle) }
+                    val downloadInfoAwait = downloadInfo.await()
+                    val downloadId = downloadInfoAwait.second
+                    val videoName = downloadInfoAwait.first
                     getDownloadStatus(downloadId, application.baseContext, videoName)
 
                     Log.d("testing", info.first)
@@ -81,23 +94,24 @@ class YoutubeViewModel(private val application: Application) : AndroidViewModel(
 
         val dm: DownloadManager = baseActivity.getSystemService(DOWNLOAD_SERVICE) as DownloadManager
 
-        viewModelScope.launch {
+        CoroutineScope(Dispatchers.Default).launch {
             var downloading = true
             while (downloading) {
                 val q: DownloadManager.Query = DownloadManager.Query()
                 q.setFilterById(downloadId)
                 val cursor: Cursor = dm.query(q)
                 cursor.moveToFirst()
-                val bytes_downloaded = cursor.getInt(
+                val bytes_downloaded : Double= cursor.getInt(
                     cursor.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR)
-                )
-                val bytes_total =
-                    cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES))
+                ).toDouble()
+                val bytes_total : Double =
+                    cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES)).toDouble()
                 if (cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS)) == DownloadManager.STATUS_SUCCESSFUL) {
                     downloading = false
                 }
-//                val dl_progress = (bytes_downloaded * 100L)/bytes_total
-                Log.d("testing", "status -> ${statusMessage(cursor)}, progress -> $bytes_downloaded total -> $bytes_total")
+                val dl_progress = (bytes_downloaded / bytes_total) * 100
+                _videoDownloadProgress.postValue(dl_progress)
+                Log.d("testing", "status -> ${statusMessage(cursor)}")
 
                 if (statusMessage(cursor)=="Download complete!"){
                     val youtubeURL = YoutubeURL(videoTitle = videoTitle, downloadDate = Date().time)
@@ -169,6 +183,10 @@ class YoutubeViewModel(private val application: Application) : AndroidViewModel(
         downloadReference = dm.enqueue(request)
 
         return Pair("$videoTitle.mp4", downloadReference)
+    }
+
+    fun finishDownload(){
+        _videoDownloadProgress.value = 0.0
     }
 }
 @Suppress("UNCHECKED_CAST")
