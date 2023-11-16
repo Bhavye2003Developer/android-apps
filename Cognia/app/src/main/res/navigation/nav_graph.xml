@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/takeImage">
+
+    <fragment
+        android:id="@+id/takeImage"
+        android:name="com.example.cognia.fragments.TakeImage"
+        android:label="TakeImage" >
+        <action
+            android:id="@+id/action_takeImage_to_imageRecognition"
+            app:destination="@id/imageRecognition"
+            app:enterAnim="@anim/nav_slide_in_right"
+            app:exitAnim="@anim/nav_slide_out_left"
+            app:popExitAnim="@anim/nav_slide_out_right"
+            app:popEnterAnim="@anim/nav_slide_in_left"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/imageRecognition"
+        android:name="com.example.cognia.fragments.ImageRecognition"
+        android:label="fragment_image_recognition"
+        tools:layout="@layout/fragment_image_recognition">
+
+        <argument
+            android:name="imageUriString"
+            app:argType="string"
+            android:defaultValue=""/>
+    </fragment>
+</navigation>
