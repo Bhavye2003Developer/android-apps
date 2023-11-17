@@ -48,7 +48,7 @@ This repository contains a collection of Android applications developed for lear
 
 6. **Learning Apps (various):**
     - Description: Apps developed during the learning process, exploring Android fundamentals and concepts.
-    - Directories: `LearningApps/*`
+    - All android apps except above listed.
 
 ## Contributing
 
