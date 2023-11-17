@@ -1,4 +1,4 @@
-![WhatsApp Image 2023-11-17 at 10 21 04_41c73403](https://github.com/Bhavye2003Developer/android-apps/assets/110657263/950e1931-35c0-4c9a-a447-a81c9c7cad28)# GPTOpenAI
+# GPTOpenAI
 
 GPTOpenAI is an AI application designed to interact with the OpenAI API, providing users with answers to their queries. The app includes features like sending requests to the OpenAI API, displaying user questions and answers in a RecyclerView, and utilizing coroutines with Retrofit to avoid blocking the UI. The app follows the MVVM architecture with components like `ChatRecyclerView`, `GptViewModel`, `network`, `ChatGptFragment`, and `MainActivity`.
 
