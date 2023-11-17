@@ -9,7 +9,7 @@ import retrofit2.http.Headers
 import retrofit2.http.POST
 import java.util.concurrent.TimeUnit
 
-const val api_key = ""
+const val api_key = "INSERT_YOUR_API_KEY"
 const val BASE_URL = "https://api.openai.com/"
 
 
