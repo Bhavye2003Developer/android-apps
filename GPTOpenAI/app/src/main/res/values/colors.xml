@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="question_text_color">#333333</color>
+    <color name="answer_text_color">#666666</color>
+
+    <color name="dark_background_color">#121212</color> <!-- Dark background color -->
+    <color name="dark_user_text_color">#FFFFFF</color> <!-- Text color for user's query -->
+    <color name="dark_input_background_color">#1E1E1E</color>
+
+
+
+    <!-- Dark text color for question -->
+    <color name="dark_text_color">#FFFFFF</color> <!-- White text color for better visibility -->
+
+    <!-- Accent color for answer -->
+    <color name="accent_color">#00BFA5</color>
+
+    <color name="divider_color">#CCCCCC</color>
+
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:top="-1dp"> <!-- Adjust the top offset as needed for positioning -->
+        <shape
+            android:shape="rectangle">
+            <size
+                android:height="1dp" /> <!-- Adjust the height of the divider line -->
+            <solid
+                android:color="@color/divider_color" /> <!-- Set the color of the divider line -->
+        </shape>
+    </item>
+</layer-list>

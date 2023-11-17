@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/dark_background_color"> <!-- Set a dark background color -->
+
+    <!-- Question TextView -->
+    <TextView
+        android:id="@+id/questionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:lineSpacingExtra="8dp"
+        android:text="What's on your mind?"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:background="@drawable/question_background"> <!-- Use the modified question_background drawable -->
+    </TextView>
+
+    <!-- Answer TextView -->
+    <TextView
+        android:id="@+id/answerTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:lineSpacingExtra="8dp"
+        android:text="Here's your answer:"
+        android:textColor="@color/accent_color"
+        android:textSize="16sp" />
+
+    <!-- Horizontal Line -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/divider_line" /> <!-- Use a drawable for the line -->
+
+</LinearLayout>

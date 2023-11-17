@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">GPT OpenAI</string>
+    <string name="enter_your_query">Enter your query</string>
+</resources>

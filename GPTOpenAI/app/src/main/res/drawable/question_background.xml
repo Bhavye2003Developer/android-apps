@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Outer Border -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#20CCCCCC" /> <!-- Lighter and semi-transparent gray color -->
+            <corners android:radius="8dp" /> <!-- Adjust the corner radius as needed -->
+        </shape>
+    </item>
+
+    <!-- Inner Background (Transparent) -->
+    <item android:left="2dp" android:right="2dp" android:top="2dp" android:bottom="2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" /> <!-- Transparent inner background -->
+            <corners android:radius="6dp" /> <!-- Adjust the corner radius as needed -->
+        </shape>
+    </item>
+</layer-list>
