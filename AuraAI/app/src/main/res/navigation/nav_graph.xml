@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home2">
+
+    <fragment
+        android:id="@+id/home2"
+        android:name="com.example.auraai.fragments.Home"
+        android:label="Home" >
+        <action
+            android:id="@+id/action_home2_to_imageCapture"
+            app:destination="@id/imageCapture" />
+    </fragment>
+    <fragment
+        android:id="@+id/imageCapture"
+        android:name="com.example.auraai.fragments.ImageCapture"
+        android:label="fragment_image_capture"
+        tools:layout="@layout/fragment_image_capture" >
+        <action
+            android:id="@+id/action_imageCapture_to_objectDetectionFragment"
+            app:destination="@id/objectDetectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/objectDetectionFragment"
+        android:name="com.example.auraai.fragments.ObjectDetectionFragment"
+        android:label="fragment_object_detection"
+        tools:layout="@layout/fragment_object_detection">
+
+        <argument
+            android:name="savedImageUri"
+            app:argType="string"/>
+    </fragment>
+</navigation>
