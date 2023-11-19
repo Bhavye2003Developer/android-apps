@@ -7,7 +7,6 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
@@ -29,13 +28,15 @@ class ObjectDetectionFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentObjectDetectionBinding.inflate(inflater, container, false)
 
-        viewModel = ViewModelProvider(this,
-            ObjectDetectionViewModelFactory(requireActivity().application))[ObjectDetectionViewModel::class.java]
+        viewModel = ViewModelProvider(
+            this,
+            ObjectDetectionViewModelFactory(requireActivity().application)
+        )[ObjectDetectionViewModel::class.java]
 
         return binding.root
     }
 
-    @SuppressLint("NewApi")
+    @SuppressLint("NewApi", "SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -45,8 +46,12 @@ class ObjectDetectionFragment : Fragment() {
 
         viewModel.analyseImage(imageUri)
 
-        viewModel.result.observe(viewLifecycleOwner){
-            Toast.makeText(requireActivity().applicationContext, it, Toast.LENGTH_SHORT).show()
+        viewModel.result.observe(viewLifecycleOwner) {
+            if (it == "No Object found") binding.detectedObjectsText.text = it
+            else {
+                binding.detectedObjectsText.text = "Objects Detected\n\n${it}"
+//                val coordinateSet = viewModel.coordinates.value
+            }
         }
     }
 }
