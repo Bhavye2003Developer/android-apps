@@ -2,4 +2,7 @@
     <string name="app_name">Aura AI</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="audio_mutation">AUDIO MUTATION</string>
+    <string name="object_detection">OBJECT DETECTION</string>
+    <string name="summarise_text">SUMMARISE TEXT</string>
 </resources>

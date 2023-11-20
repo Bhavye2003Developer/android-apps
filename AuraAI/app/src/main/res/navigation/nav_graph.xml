@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/home2"
         android:name="com.example.auraai.fragments.Home"
-        android:label="Home" >
+        android:label="Home">
         <action
             android:id="@+id/action_home2_to_imageCapture"
             app:destination="@id/imageCapture" />
@@ -17,10 +17,20 @@
         android:id="@+id/imageCapture"
         android:name="com.example.auraai.fragments.ImageCapture"
         android:label="fragment_image_capture"
-        tools:layout="@layout/fragment_image_capture" >
+        tools:layout="@layout/fragment_image_capture">
         <action
             android:id="@+id/action_imageCapture_to_objectDetectionFragment"
             app:destination="@id/objectDetectionFragment" />
+
+        <argument
+            android:name="featureID"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_imageCapture_to_imageToTextFragment"
+            app:destination="@id/imageToTextFragment" />
+
+
     </fragment>
     <fragment
         android:id="@+id/objectDetectionFragment"
@@ -30,6 +40,17 @@
 
         <argument
             android:name="savedImageUri"
-            app:argType="string"/>
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/imageToTextFragment"
+        android:name="com.example.auraai.fragments.ImageToTextFragment"
+        android:label="fragment_image_to_text"
+        tools:layout="@layout/fragment_image_to_text">
+
+        <argument
+            android:name="savedImageUri"
+            app:argType="string" />
+
     </fragment>
 </navigation>

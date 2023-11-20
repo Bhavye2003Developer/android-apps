@@ -1,5 +1,7 @@
 package com.example.auraai.apiServices
 
+import com.example.auraai.apiServices.BaseApi.API_KEY
+import com.example.auraai.apiServices.BaseApi.BASE_URL
 import com.example.auraai.objectDetection.ObjDetect
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -8,12 +10,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.POST
-
-
-private const val BASE_URL = "https://api-inference.huggingface.co/models/"
-private const val API_KEY = "YOUR_API_KEY"
-
-// login to https://api-inference.huggingface.co/
 
 //used 'DETR (End-to-End Object Detection) model with ResNet-50 backbone'
 interface ObjectDetectionService {

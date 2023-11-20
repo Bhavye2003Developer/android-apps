@@ -81,4 +81,22 @@ dependencies {
     //gson
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
+    //machine learning dependencies
+    // Face features
+    implementation("com.google.mlkit:face-detection:16.1.5")
+    // Text features
+    // To recognize Latin script
+    implementation("com.google.mlkit:text-recognition:16.0.0")
+
+    // To recognize Chinese script
+    implementation("com.google.mlkit:text-recognition-chinese:16.0.0")
+
+    // To recognize Devanagari script
+    implementation("com.google.mlkit:text-recognition-devanagari:16.0.0")
+
+    // To recognize Japanese script
+    implementation("com.google.mlkit:text-recognition-japanese:16.0.0")
+
+    // To recognize Korean script
+    implementation("com.google.mlkit:text-recognition-korean:16.0.0")
 }

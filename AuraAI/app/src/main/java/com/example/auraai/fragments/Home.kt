@@ -25,7 +25,12 @@ class Home : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnObjectDetection.setOnClickListener {
-            val action = HomeDirections.actionHome2ToImageCapture()
+            val action = HomeDirections.actionHome2ToImageCapture(1)
+            findNavController().navigate(action)
+        }
+
+        binding.btnImageToText.setOnClickListener {
+            val action = HomeDirections.actionHome2ToImageCapture(2)
             findNavController().navigate(action)
         }
     }

@@ -6,7 +6,6 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +17,9 @@ import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.auraai.databinding.FragmentImageCaptureBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -28,6 +29,7 @@ class ImageCapture : Fragment() {
     private lateinit var binding: FragmentImageCaptureBinding
     private var imageCapture: ImageCapture? = null
     private lateinit var cameraExecutor: ExecutorService
+    private val args: ImageCaptureArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,6 +38,7 @@ class ImageCapture : Fragment() {
         binding = FragmentImageCaptureBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -58,15 +61,17 @@ class ImageCapture : Fragment() {
         val contentValues = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, name)
             put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
-            if(Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
                 put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/CameraX-Image")
             }
         }
         // Create output options object which contains file + metadata
         val outputOptions = ImageCapture.OutputFileOptions
-            .Builder(requireActivity().contentResolver,
+            .Builder(
+                requireActivity().contentResolver,
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                contentValues)
+                contentValues
+            )
             .build()
 
         // Set up image capture listener, which is triggered after photo has
@@ -78,19 +83,34 @@ class ImageCapture : Fragment() {
                 override fun onError(exc: ImageCaptureException) {
                     Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
                 }
+
                 override fun
-                        onImageSaved(output: ImageCapture.OutputFileResults){
+                        onImageSaved(output: ImageCapture.OutputFileResults) {
                     val msg = "Photo capture succeeded: ${output.savedUri}"
                     Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
 
-                    val action = ImageCaptureDirections.actionImageCaptureToObjectDetectionFragment(output.savedUri.toString())
-                    findNavController().navigate(action)
+                    val featureID = args.featureID
+                    val imageUriString = output.savedUri.toString()
+                    if (featureID == 1) { // navigate to object detection fragment
+                        val action =
+                            ImageCaptureDirections.actionImageCaptureToObjectDetectionFragment(
+                                imageUriString
+                            )
+                        findNavController().navigate(action)
+                    } else if (featureID == 2) {
+                        val action =
+                            ImageCaptureDirections.actionImageCaptureToImageToTextFragment(
+                                imageUriString
+                            )
+                        findNavController().navigate(action)
+                    }
 
                     Log.d(TAG, msg)
                 }
             }
         )
     }
+
     private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireActivity().baseContext)
         cameraProviderFuture.addListener({
@@ -112,9 +132,10 @@ class ImageCapture : Fragment() {
 
                 // Bind use cases to camera
                 cameraProvider.bindToLifecycle(
-                    this, cameraSelector, preview, imageCapture)
+                    this, cameraSelector, preview, imageCapture
+                )
 
-            } catch(exc: Exception) {
+            } catch (exc: Exception) {
                 Log.e(TAG, "Use case binding failed", exc)
             }
         }, ContextCompat.getMainExecutor(requireActivity().baseContext))
@@ -126,12 +147,14 @@ class ImageCapture : Fragment() {
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(
-            requireActivity().baseContext, it) == PackageManager.PERMISSION_GRANTED
+            requireActivity().baseContext, it
+        ) == PackageManager.PERMISSION_GRANTED
     }
 
     private val activityResultLauncher =
         registerForActivityResult(
-            ActivityResultContracts.RequestMultiplePermissions())
+            ActivityResultContracts.RequestMultiplePermissions()
+        )
         { permissions ->
             // Handle Permission granted/rejected
             var permissionGranted = true
@@ -140,9 +163,11 @@ class ImageCapture : Fragment() {
                     permissionGranted = false
             }
             if (!permissionGranted) {
-                Toast.makeText(requireActivity().baseContext,
+                Toast.makeText(
+                    requireActivity().baseContext,
                     "Permission request denied",
-                    Toast.LENGTH_SHORT).show()
+                    Toast.LENGTH_SHORT
+                ).show()
             } else {
                 startCamera()
             }
@@ -157,7 +182,7 @@ class ImageCapture : Fragment() {
         private const val TAG = "CameraXApp"
         private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
         private val REQUIRED_PERMISSIONS =
-            mutableListOf (
+            mutableListOf(
                 android.Manifest.permission.CAMERA,
                 android.Manifest.permission.RECORD_AUDIO
             ).apply {
