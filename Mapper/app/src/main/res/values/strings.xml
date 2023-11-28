@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Mapper</string>
+    <string name="plot_the_coordinates">PLOT THE COORDINATES</string>
+    <string name="plot">PLOT</string>
+    <string name="y">y</string>
+    <string name="x">x</string>
+</resources>
