@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FitPulse</string>
+    <string name="fetching">Fetching...</string>
+    <string name="save">Save</string>
+    <string name="how_much_sleep_you_took">How much sleep you took?</string>
+    <string name="what_s_your_water_intake">What\'s your water intake?</string>
+</resources>
