@@ -1,6 +1,5 @@
-package com.example.netscan
+package com.example.netscan.viewModels
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -32,7 +31,6 @@ class PingViewModel : ViewModel() {
             val stdError = BufferedReader(InputStreamReader(proc.errorStream))
 
             // Read the output from the command
-            Log.d("testing","Here is the standard output of the command:\n")
             var s: String?
             while (withContext(Dispatchers.IO) {
                     stdInput.readLine()
@@ -43,10 +41,7 @@ class PingViewModel : ViewModel() {
                 }
             }
 
-
             // Read any errors from the attempted command
-            Log.d("testing","Here is the standard error of the command (if any):\n")
-
             while (withContext(Dispatchers.IO) {
                     stdError.readLine()
                 }.also { s = it } != null) {
