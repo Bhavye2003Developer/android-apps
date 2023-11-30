@@ -1,0 +1,294 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Daily Quote CardView -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:id="@+id/cardViewQuote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Daily Quote Section -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/quote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fetching"
+                    android:padding="10dp"
+                    android:textSize="27sp"
+                    android:textStyle="italic"
+                    android:maxLines="2"
+                    android:gravity="center"
+                    style="@style/TextAppearance.MaterialComponents.Headline6" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/author"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="viewEnd"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textSize="17sp"
+                    android:textStyle="italic"
+                    android:layout_marginTop="8dp"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Sleep CardView -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:id="@+id/cardViewSleep"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <!-- Sleep Icon -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/sleepText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:padding="2dp"
+                    android:fontFamily="sans-serif-thin"
+                    android:textStyle="bold"
+                    android:text="@string/how_much_sleep_you_took"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1" />
+
+                <!-- Sleep Input Fields -->
+                <LinearLayout
+                    android:id="@+id/sleepSectionView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:visibility="gone">
+
+                    <!-- Hours Input Field -->
+                    <Spinner
+                        android:id="@+id/hoursInputDropdown"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:spinnerMode="dropdown"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <!-- Minutes Input Field -->
+                    <Spinner
+                        android:id="@+id/minutesInputDropdown"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:spinnerMode="dropdown"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Water Intake CardView -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:id="@+id/cardViewWater"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <!-- Water Icon -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/waterText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="sans-serif-thin"
+                    android:padding="5dp"
+                    android:text="@string/what_s_your_water_intake"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1" />
+
+                <LinearLayout
+                    android:id="@+id/waterSectionView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <!-- Water Intake Progress Bar -->
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/waterProgressBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:value="50"
+                        android:valueFrom="0"
+                        android:valueTo="100" />
+
+                    <!-- Water Unit Dropdown -->
+                    <Spinner
+                        android:id="@+id/waterUnitDropdown"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:spinnerMode="dropdown"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Exercise CardView -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:id="@+id/cardViewExercise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <!-- Exercise Icon -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/exerciseText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:padding="5dp"
+                    android:text="@string/how_much_exercise_you_did"
+                    android:fontFamily="sans-serif-thin"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1" />
+
+                <LinearLayout
+                    android:id="@+id/exerciseSectionView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <!-- Exercise Input Fields -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
+
+                        <!-- Hours Input Field -->
+                        <Spinner
+                            android:id="@+id/exerciseHoursInputDropdown"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:spinnerMode="dropdown"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <!-- Minutes Input Field -->
+                        <Spinner
+                            android:id="@+id/exerciseMinutesInputDropdown"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:spinnerMode="dropdown"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                    </LinearLayout>
+
+                    <!-- Exercise Type Dropdown -->
+                    <Spinner
+                        android:id="@+id/exerciseTypeDropdown"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:spinnerMode="dropdown"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <!-- Save Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveSleepButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/save"
+            android:layout_marginTop="16dp"
+            style="@style/Widget.MaterialComponents.Button" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textSize="23sp"
+            android:layout_marginTop="16dp"
+            style="@style/TextAppearance.MaterialComponents.Body1" />
+    </LinearLayout>
+</ScrollView>

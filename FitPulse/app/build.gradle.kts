@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("androidx.navigation.safeargs.kotlin") // safe args
 }
 
 android {
@@ -56,6 +57,12 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
     implementation("com.squareup.retrofit2:converter-scalars:$retrofit_version")
     implementation("com.squareup.retrofit2:converter-gson:$retrofit_version")
+
+    //navigation
+    val nav_version = "2.7.5"
+    // Kotlin
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
 
 }

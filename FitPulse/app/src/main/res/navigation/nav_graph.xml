@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home2">
+
+    <fragment
+        android:id="@+id/home2"
+        android:name="com.example.fitpulse.fragments.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/dailyTasks"
+        android:name="com.example.fitpulse.fragments.DailyTasks"
+        android:label="fragment_daily_tasks"
+        tools:layout="@layout/fragment_daily_tasks" />
+    <fragment
+        android:id="@+id/tracking"
+        android:name="com.example.fitpulse.fragments.Tracking"
+        android:label="Tracking" />
+</navigation>
