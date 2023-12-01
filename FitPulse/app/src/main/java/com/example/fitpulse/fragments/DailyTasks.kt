@@ -8,12 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.fitpulse.adapters.TaskListAdapter
 import com.example.fitpulse.databinding.FragmentDailyTasksBinding
 import com.example.fitpulse.room.dailyTasks.DailyTask
 import com.example.fitpulse.viewModels.DailyTaskViewModel
 import com.example.fitpulse.viewModels.DailyTaskViewModelFactory
 import java.util.Calendar
-import java.util.Date
 
 class DailyTasks : Fragment(), TaskDialogListener {
     private lateinit var viewModel: DailyTaskViewModel
@@ -41,6 +41,11 @@ class DailyTasks : Fragment(), TaskDialogListener {
         binding.buttonAddTask.setOnClickListener {
             showTaskDialog()
         }
+
+        viewModel.allDailyTasks.observe(viewLifecycleOwner) {
+            binding.todayTasksRecyclerView.adapter =
+                TaskListAdapter(it, ::removeTask, ::updateTaskToDone, ::updateTaskToLongTerm)
+        }
     }
 
     private fun showTaskDialog() {
@@ -49,12 +54,34 @@ class DailyTasks : Fragment(), TaskDialogListener {
     }
 
     override fun taskData(taskText: String, isPermanent: Boolean) {
-        val currentDateTime: Date = Calendar.getInstance().time
+        val currentDate = getTodayDate()
         val dailyTask = DailyTask(
             taskText = taskText,
             isPermanent = isPermanent,
-            dateTime = currentDateTime.time
+            dateTime = currentDate
         )
         viewModel.insertNewTask(dailyTask)
+    }
+
+
+    private fun getTodayDate(): Long {
+        val cal = Calendar.getInstance()
+        cal[Calendar.HOUR_OF_DAY] = 0
+        cal[Calendar.MINUTE] = 0
+        cal[Calendar.SECOND] = 0
+        cal[Calendar.MILLISECOND] = 0
+        return cal.timeInMillis
+    }
+
+    private fun removeTask(dailyTask: DailyTask) {
+        viewModel.removeTask(dailyTask)
+    }
+
+    private fun updateTaskToDone(id: Int) {
+        viewModel.updateTaskToDone(id)
+    }
+
+    private fun updateTaskToLongTerm(id: Int) {
+        viewModel.updateTaskToLongTerm(id)
     }
 }

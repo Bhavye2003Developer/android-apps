@@ -12,4 +12,5 @@
     <string name="home">Home</string>
     <string name="enter_your_task">Enter your task</string>
     <string name="is_it_a_long_term_task">Is it a long term task?</string>
+    <string name="add_task_icon">+</string>
 </resources>
