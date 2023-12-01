@@ -10,4 +10,6 @@
     <string name="daily_tasks">Daily Tasks</string>
     <string name="tracker">Tracker</string>
     <string name="home">Home</string>
+    <string name="enter_your_task">Enter your task</string>
+    <string name="is_it_a_long_term_task">Is it a long term task?</string>
 </resources>
