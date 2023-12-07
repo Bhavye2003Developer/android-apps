@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "752390834395",
+    "project_id": "cipherchat-35db3",
+    "storage_bucket": "cipherchat-35db3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:752390834395:android:ef2d96f3927d57614e24fe",
+        "android_client_info": {
+          "package_name": "com.example.cipherchat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDv7K_NDuZi1a9kaYqx9TuinNwJ3E9FZvw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
