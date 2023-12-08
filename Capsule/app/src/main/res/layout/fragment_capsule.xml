@@ -1,0 +1,42 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.CapsuleFragment">
+
+    <!-- Timer TextView -->
+    <TextView
+        android:id="@+id/timerTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="end"
+        android:text="00:00"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:textSize="24sp"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textStyle="bold"
+        tools:ignore="RtlHardcoded" />
+
+    <!-- TabLayout -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/timerTextView"
+        android:background="?android:attr/windowBackground"
+        android:textColor="?android:attr/colorAccent"
+        app:tabSelectedTextColor="?android:attr/colorPrimary"
+        app:tabTextColor="?android:attr/textColorSecondary"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <!-- ViewPager2 -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tab_layout" />
+
+</RelativeLayout>

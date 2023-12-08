@@ -1,0 +1,107 @@
+<!-- res/layout/quiz_question_layout.xml -->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_quiz_layout">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:id="@+id/fragment_quiz_constraintLayout">
+
+        <!-- ProgressBar -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:progress="0"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Question Text -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/questionTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="What is the primary function of blood in the human body?"
+            android:textSize="18sp"
+            android:textColor="?attr/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+        <!-- Answer Options -->
+        <RadioGroup
+            android:id="@+id/answerOptionsGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/questionTextView">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/option1RadioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Transporting oxygen"
+                android:buttonTint="?attr/colorControlActivated" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/option2RadioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Digesting food"
+                android:buttonTint="?attr/colorControlActivated" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/option3RadioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Producing energy"
+                android:buttonTint="?attr/colorControlActivated" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/option4RadioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Filtering waste"
+                android:buttonTint="?attr/colorControlActivated" />
+        </RadioGroup>
+
+        <!-- Check Answer Button -->
+
+        <!-- Next Question Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/checkAnswerBtn"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="51dp"
+            android:layout_marginTop="16dp"
+            android:text="Check Answer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.123"
+            app:layout_constraintStart_toStartOf="@+id/answerOptionsGroup"
+            app:layout_constraintTop_toBottomOf="@+id/answerOptionsGroup" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nextQuestionBtn"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="51dp"
+            android:layout_marginTop="16dp"
+            android:text="Next Question"
+            app:layout_constraintEnd_toEndOf="@+id/answerOptionsGroup"
+            app:layout_constraintStart_toEndOf="@+id/checkAnswerBtn"
+            app:layout_constraintTop_toBottomOf="@+id/answerOptionsGroup" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
