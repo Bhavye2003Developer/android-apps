@@ -4,4 +4,21 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
+
+
+    <!-- Dark Theme -->
+    <style name="AppTheme.Dark" parent="Theme.Material3.Dark">
+        <item name="colorPrimary">#075E54</item>
+        <item name="colorPrimaryVariant">#128C7E</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#25D366</item>
+        <item name="colorSecondaryVariant">#128C7E</item>
+        <item name="colorOnSecondary">#000000</item>
+        <item name="colorOnBackground">#FFFFFF</item>
+        <item name="colorSurface">#121212</item>
+        <item name="colorOnSurface">#FFFFFF</item>
+        <item name="colorError">#FF0000</item>
+        <item name="colorOnError">#FFFFFF</item>
+    </style>
+
 </resources>
