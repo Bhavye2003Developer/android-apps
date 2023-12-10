@@ -18,13 +18,14 @@ import kotlinx.coroutines.withContext
 class GlobalMessageViewModel : ViewModel() {
 
     private val utils = Utils()
-    private var _allMessages: MutableLiveData<MutableList<Message>> = MutableLiveData(mutableListOf())
+    private var _allMessages: MutableLiveData<MutableList<Message>> =
+        MutableLiveData(mutableListOf())
     val allMessages: LiveData<MutableList<Message>>
         get() = _allMessages
     private val TAG = "testing"
 
     // have to call to connect child listener to globalMessageRef
-    val childEventListener = object : ChildEventListener {
+    private val childEventListener = object : ChildEventListener {
         override fun onChildAdded(dataSnapshot: DataSnapshot, previousChildName: String?) {
             val newMessage = dataSnapshot.getValue<Message>()
 
@@ -51,13 +52,13 @@ class GlobalMessageViewModel : ViewModel() {
         }
     }
 
-    init{
+    init {
         utils.globalMessagesRef.addChildEventListener(childEventListener)
     }
 
-    fun writeNewMessage(message: Message){
+    fun writeNewMessage(message: Message) {
         viewModelScope.launch {
-            withContext(Dispatchers.IO){
+            withContext(Dispatchers.IO) {
                 utils.writeNewMessageToDatabase(message)
             }
         }

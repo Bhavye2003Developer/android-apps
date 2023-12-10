@@ -7,12 +7,17 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 class Utils {
-//    private var database: FirebaseDatabase = Firebase.database
+    //    private var database: FirebaseDatabase = Firebase.database
     private val database = CipherChatApp.database
     val globalMessagesRef = database.getReference("global_chat/messages")
+    val allUsersRef = database.getReference("users")
 
     fun writeNewMessageToDatabase(message: Message) {
         globalMessagesRef.push().setValue(message)
+    }
+
+    fun addNewUser(username: String) {
+        allUsersRef.push().setValue(username)
     }
 
     @SuppressLint("SimpleDateFormat")
