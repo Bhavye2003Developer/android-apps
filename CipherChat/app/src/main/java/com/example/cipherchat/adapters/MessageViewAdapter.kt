@@ -8,11 +8,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cipherchat.R
 import com.example.cipherchat.utils.Message
+import com.example.cipherchat.utils.Utils
 import java.text.Format
 import java.text.SimpleDateFormat
 import java.util.Date
 
 class MessageViewAdapter(private val chats: MutableList<Message>): RecyclerView.Adapter<MessageViewAdapter.ItemViewHolder>() {
+
+    private val utils = Utils()
 
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val textMessage: TextView = view.findViewById(R.id.textMessage)
@@ -34,13 +37,6 @@ class MessageViewAdapter(private val chats: MutableList<Message>): RecyclerView.
         val message = chats[position]
         holder.textMessage.text = message.text
         holder.textSender.text = message.sender
-        holder.textTime.text = convertTime(message.sendTime)
-    }
-
-    @SuppressLint("SimpleDateFormat")
-    fun convertTime(time: Long): String? {
-        val date = Date(time)
-        val format: Format = SimpleDateFormat("yyyy MM dd HH:mm:ss")
-        return format.format(date)
+        holder.textTime.text = utils.convertTime(message.sendTime)
     }
 }

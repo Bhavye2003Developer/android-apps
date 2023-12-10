@@ -7,7 +7,7 @@
 
 
     <!-- Dark Theme -->
-    <style name="AppTheme.Dark" parent="Theme.Material3.Dark">
+    <style name="AppTheme.Dark" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="colorPrimary">#075E54</item>
         <item name="colorPrimaryVariant">#128C7E</item>
         <item name="colorOnPrimary">#FFFFFF</item>

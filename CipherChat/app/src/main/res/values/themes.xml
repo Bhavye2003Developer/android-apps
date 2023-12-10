@@ -8,7 +8,7 @@
     <style name="Theme.CipherChat" parent="Base.Theme.CipherChat" />
 
     <!-- Light Theme -->
-    <style name="AppTheme.Light" parent="Theme.Material3.Light.NoActionBar">
+    <style name="AppTheme.Light" parent="Theme.MaterialComponents.Light">
         <item name="colorPrimary">#075E54</item>
         <item name="colorPrimaryVariant">#128C7E</item>
         <item name="colorOnPrimary">#FFFFFF</item>
