@@ -23,7 +23,6 @@ class GlobalChatFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentGlobalChatBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[GlobalMessageViewModel::class.java]
-        viewModel.initViewModel()
         return binding.root
     }
 

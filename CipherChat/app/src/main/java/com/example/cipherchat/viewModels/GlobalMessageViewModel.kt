@@ -23,29 +23,14 @@ class GlobalMessageViewModel : ViewModel() {
         get() = _allMessages
     private val TAG = "testing"
 
-    fun initViewModel(){ // have to call to connect child listener to globalMessageRef
-        utils.globalMessagesRef.addChildEventListener(childEventListener)
-    }
-
-    fun writeNewMessage(message: Message){
-        viewModelScope.launch {
-            withContext(Dispatchers.IO){
-                utils.writeNewMessageToDatabase(message)
-            }
-        }
-    }
-
-
-    private val childEventListener = object : ChildEventListener {
+    // have to call to connect child listener to globalMessageRef
+    val childEventListener = object : ChildEventListener {
         override fun onChildAdded(dataSnapshot: DataSnapshot, previousChildName: String?) {
             val newMessage = dataSnapshot.getValue<Message>()
 
             // have to optimise it for larger chats
-            val messages = _allMessages.value
-            if (newMessage != null) {
-                messages?.add(newMessage)
-            }
-            _allMessages.value = messages
+            newMessage?.let { _allMessages.value?.add(it) }
+            _allMessages.value = _allMessages.value
         }
 
         override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
@@ -63,6 +48,18 @@ class GlobalMessageViewModel : ViewModel() {
 
         override fun onCancelled(error: DatabaseError) {
             Log.d(TAG, "")
+        }
+    }
+
+    init{
+        utils.globalMessagesRef.addChildEventListener(childEventListener)
+    }
+
+    fun writeNewMessage(message: Message){
+        viewModelScope.launch {
+            withContext(Dispatchers.IO){
+                utils.writeNewMessageToDatabase(message)
+            }
         }
     }
 }
